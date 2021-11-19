@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Match } from "./api";
 export const Matches = ({
   matches,
@@ -13,6 +13,10 @@ export const Matches = ({
       t.borrower.user.lastName.toLowerCase()
     ).includes(search.toLowerCase())
   );
+  const [score, setScore] = useState("A");
+
+
+
 
   return (
     <ul className="matches">
@@ -35,7 +39,13 @@ export const Matches = ({
                 <b>Balance: </b> {match.borrower.financeData.balance}{" "}
                 {match.borrower.financeData.currency}
               </p>
+              <p className="userDate">
+                <b>Credit Score:</b>
+                {match.borrower.creditScore}
+              </p>
             </div>
+            {/* I add turnery if for credit score */}
+            <p>{match.borrower.creditScore < 679 && match.borrower.creditScore > 579 ? <span id="score_B"> B</span> : (match.borrower.creditScore > 679 ? <span id="score_A"> A</span> : <span id="score_C"> C</span>)}</p>
           </div>
           <footer>
             <div className="meta-data">
