@@ -7,7 +7,7 @@ const app = express();
 
 const PORT = 8888;
 
-const PAGE_SIZE = 5;
+const PAGE_SIZE = 12;
 
 app.use(bodyParser.json());
 

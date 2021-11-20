@@ -1,20 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { Match } from "./api";
 export const Matches = ({
   matches,
   search,
+
 }: {
   matches: Match[];
   search: string;
+
+
+
+
 }) => {
   const filteredMatches = matches.filter((t) =>
     (
       t.borrower.user.firstName.toLowerCase() +
-      t.borrower.user.lastName.toLowerCase()
-    ).includes(search.toLowerCase())
-  );
-  const [score, setScore] = useState("A");
+      t.borrower.user.lastName.toLowerCase() +
+      t.borrower.user.email.toLowerCase() +
+      t.companyName.toLowerCase() +
+      t.labels
+    ).includes(search),
 
+  );
 
 
 
