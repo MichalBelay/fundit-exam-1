@@ -113,24 +113,86 @@ body .matches .match footer .meta-data {
 .matchData {
   display: flex;
   justify-content: space-between;
-  font-size: 2em;
+  font-size: 3em;
+
 
 }
 
 #score_A {
   color: greenyellow;
   font-size: bolder;
+  margin-left: 40%;
 
 }
 
 #score_B {
   color: yellow;
   font-size: bolder;
+  margin-left: 40%;
 
 }
 
 #score_C {
   color: red;
   font-size: bolder;
+  margin-left: 40%;
+
+
+}
+
+#Decline {
+
+  font-size: 0.5em;
+  background-color: rgb(218, 47, 47);
+  border: 0px;
+  border-radius: 10px;
+  margin-left: 5px;
+
+  padding: 10px;
+  cursor: pointer;
+
+}
+
+#Approve {
+  font-size: 0.5em;
+  background-color: green;
+  border: 0px;
+  border-radius: 10px;
+  /* width: 50%; */
+  padding: 10px;
+  cursor: pointer;
+
+
+}
+
+#Decline:hover {
+  border: 2px solid red;
+  box-shadow: 2px 2px;
+  background-color: rgb(230, 45, 45);
+  color: white;
+}
+
+#Approve:hover {
+  border: 2px solid green;
+  box-shadow: 2px 2px;
+  background-color: rgb(70, 136, 70);
+  color: white;
+}
+
+
+
+.score_buttons {
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+@media (max-width: 768px) {
+  .matchData {
+    display: flex;
+    flex-wrap: wrap;
+
+  }
 
 }

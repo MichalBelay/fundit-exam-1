@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Match } from "./api";
 export const Matches = ({
   matches,
@@ -7,21 +7,27 @@ export const Matches = ({
 }: {
   matches: Match[];
   search: string;
-
-
-
-
 }) => {
   const filteredMatches = matches.filter((t) =>
     (
+      /* here i add  search filters */
       t.borrower.user.firstName.toLowerCase() +
       t.borrower.user.lastName.toLowerCase() +
       t.borrower.user.email.toLowerCase() +
-      t.companyName.toLowerCase() +
-      t.labels
+      t.companyName.toLowerCase()
+
     ).includes(search),
 
   );
+  const [approve, setApprove] = useState(0);
+  const [decline, setDecline] = useState(0);
+  const onApprove = () => {
+    setApprove(approve + 1)
+
+  }
+  const onDecline = () => {
+    setDecline(decline + 1)
+  }
 
 
 
@@ -51,8 +57,15 @@ export const Matches = ({
                 {match.borrower.creditScore}
               </p>
             </div>
-            {/* I add turnery if for credit score */}
-            <p>{match.borrower.creditScore < 679 && match.borrower.creditScore > 579 ? <span id="score_B"> B</span> : (match.borrower.creditScore > 679 ? <span id="score_A"> A</span> : <span id="score_C"> C</span>)}</p>
+            <div className="score_buttons">
+              {/* I add turnery if for credit score */}
+              <p>{match.borrower.creditScore < 679 && match.borrower.creditScore > 579 ? <span id="score_B"> B</span> : (match.borrower.creditScore > 679 ? <span id="score_A"> A</span> : <span id="score_C"> C</span>)}</p>
+              <div>
+                <button id="Approve" onClick={onApprove} disabled={false}>Approve {approve}</button>
+
+                <button id="Decline" onClick={onDecline}>Decline {decline}</button>
+              </div>
+            </div>
           </div>
           <footer>
             <div className="meta-data">
